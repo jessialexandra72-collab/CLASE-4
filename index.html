@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>operaciones</title>
+    <meta name="description" content="operaciones matematicas con javascrip" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    />
+    <style>
+      .mensaje-inicial {
+        background-color: #b0c3d6;
+        border: 1px solid #dee2e6;
+        padding: 15px;
+        margin-top: 20px;
+        border-radius: 0.25rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <img
+          src="https://cenestur.edu.ec/wp-content/uploads/2025/03/CENESTUR.png"
+          width="800"
+          height=""
+          class="rounded mx-auto d-block"
+          alt="1000"
+        />
+        <figure class="text-center">
+          <blockquote class="blockquote">
+            <h1 style="background-color: rgb(57, 137, 241)">
+              <strong>
+                <p>&#128223; &#128207; CALCULADORA BASICA (+ - * /)</p></strong
+              >
+            </h1>
+          </blockquote>
+        </figure>
+      </header>
+      <main>
+        <form>
+          <label><strong>Ingrese primer numero </strong></label><br />
+          <input
+            type="number"
+            id="Ingrese primer numero"
+            name="Ingrese primer numero"
+          /><br /><br />
+
+          <label><strong>Ingrese segundo numero</strong></label
+          ><br />
+          <input
+            type="number"
+            id="Ingrese segundo numero"
+            name="Ingrese segundo numero"
+          /><br /><br />
+
+          <input
+            type="button"
+            class="btn btn-success"
+            value="Calcular Todas"
+            onclick="calcularTodas()"
+          />
+        </form>
+
+        <div id="mensaje-contenedor" class="mensaje-inicial">
+          <strong>Resultado</strong>
+          <p>
+            Proximas operaciones a ejecutar: suma, resta, multiplicacion y
+            division
+          </p>
+        </div>
+
+        <div class="mt-4">
+          <p id="res" style="display: none"></p>
+        </div>
+      </main>
+
+      <script>
+        function calcularTodas() {
+          let num1 = document.getElementById("Ingrese primer numero").value;
+          let num2 = document.getElementById("Ingrese segundo numero").value;
+
+          num1 = parseFloat(num1 || 0);
+          num2 = parseFloat(num2 || 0);
+
+          if (isNaN(num1) || isNaN(num2)) {
+            document.getElementById("res").innerHTML =
+              "Por favor, introduce números válidos.";
+            document.getElementById("res").style.display = "block";
+            document.getElementById("mensaje-contenedor").style.display =
+              "none";
+            return;
+          }
+
+          let suma = num1 + num2;
+          let resta = num1 - num2;
+          let multiplicacion = num1 * num2;
+          let division;
+
+          if (num2 === 0) {
+            division = "<strong>No se puede dividir por 0</strong>";
+          } else {
+            division = num1 / num2;
+          }
+
+          document.getElementById("mensaje-contenedor").style.display = "none";
+
+          document.getElementById("res").innerHTML =
+            "<h3><strong>Resultados:</h3></strong>" +
+            "Suma: " +
+            suma +
+            "<br>" +
+            "Resta: " +
+            resta +
+            "<br>" +
+            "Multiplicacion: " +
+            multiplicacion +
+            "<br>" +
+            "Division: " +
+            division;
+
+          document.getElementById("res").style.display = "block";
+        }
+      </script>
+    </div>
+  </body>
+</html>
